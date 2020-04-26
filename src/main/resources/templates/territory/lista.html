@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Lista</title>
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    </head>
+    <body class="container">
+        <h2>Lista Territories</h2>
+
+        <a th:href="@{/territories/nuevo}" class="btn btn-primary mt-4 mb-4" >Crear nuevo territory</a>
+
+        <table class="table table-sm">
+            <tr>
+                <th>#</th>
+                <th>ID</th>
+                <th>Description</th>
+                <th>Region</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr th:each="territory, i: ${lista}">
+                <td th:text="${i.index + 1}"></td>
+                <td th:text="${territory.territoryid}">/td>
+                <td th:text="${territory.territorydescription}"></td>
+                <td th:text="${territory.regionid}"></td>
+                <!--td><a th:href="@{|/shipper/editar'?'id=${shipper.shipperid}|}">Editar</a></td=-->
+                <td><a th:href="@{'/territories/editar?id='+${territory.territoryid}}"class="btn btn-primary">Editar</a></td>
+
+
+            </tr>
+        </table>
+    </body>
+</html>

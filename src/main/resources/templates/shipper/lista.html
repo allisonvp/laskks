@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Lista</title>
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    </head>
+    <body class="container">
+        <h2>Lista Transportistas</h2>
+
+        <a th:href="@{/shipper/nuevo}" class="btn btn-primary mt-4 mb-4" >Crear nuevo transportista</a>
+
+        <form method="post" th:action="@{/shipper/buscarTransportista}">
+            <input name="searchField" class="form-control mb-3" type="text" placeholder="Buscar"/>
+        </form>
+
+        <div th:if="${msg!=null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
+
+        <table class="table table-sm">
+            <tr>
+                <th>#</th>
+                <th>ID</th>
+                <th>Company Name</th>
+                <th>Phone</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr th:each="shipper, i: ${lista}">
+                <td th:text="${i.index + 1}"></td>
+                <td th:text="${shipper.shipperid}">100</td>
+                <td th:text="${shipper.companyname}">Pepsi</td>
+                <td th:text="${shipper.phone}">123-4567</td>
+                <!--td><a th:href="@{|/shipper/editar'?'id=${shipper.shipperid}|}">Editar</a></td=-->
+                <td><a th:href="@{'/shipper/editar?idDelShipper='+${shipper.shipperid}}"class="btn btn-primary">Editar</a></td>
+                <td><a th:href="@{'/shipper/borrar?idDelShipper='+${shipper.shipperid}}" class="btn btn-danger">Borrar</a></td>
+
+            </tr>
+        </table>
+    </body>
+</html>

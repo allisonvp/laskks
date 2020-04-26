@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    </head>
+    <body>
+        <h3>Registro de Persona</h3>
+        <form method="post" th:action="@{/guardarPersona}">
+            <label>Nombre:</label>
+            <input type="text" name="nombre"/><br/>
+            <label>Apellido:</label>
+            <input type="text" name="apellido"/><br/>
+            <label>Dni:</label>
+            <input type="text" name="dni"/><br/>
+            <label>Edad:</label>
+            <input type="text" name="edad"/><br/>
+            <input type="submit" name="Registrar"/><br/>
+        </form>
+    </body>
+</html>
